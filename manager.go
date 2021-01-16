@@ -24,7 +24,7 @@ var (
 type CounterManager interface {
 	Add(string, Counter) CounterManager
 	Remove(string) CounterManager
-	Reset(...string) CounterManager
+	ResetAllExcept(...string) CounterManager
 	Get(string) Counter
 }
 
@@ -78,7 +78,7 @@ func (m *mgr) Remove(key string) CounterManager {
 	return m
 }
 
-func (m *mgr) Reset(except ...string) CounterManager {
+func (m *mgr) ResetAllExcept(except ...string) CounterManager {
 	m.lock.Lock()
 	defer m.lock.Unlock()
 

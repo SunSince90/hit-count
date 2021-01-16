@@ -88,7 +88,7 @@ func TestRemove(t *testing.T) {
 	a.Empty(m.counters)
 }
 
-func TestManagerReset(t *testing.T) {
+func TestManagerResetAllExcept(t *testing.T) {
 	a := assert.New(t)
 	exceptions := []string{"one", "two"}
 	start := map[string]Counter{
@@ -101,7 +101,7 @@ func TestManagerReset(t *testing.T) {
 		counters: start,
 	}
 
-	m.Reset(exceptions...)
+	m.ResetAllExcept(exceptions...)
 	a.Equal(m.counters, map[string]Counter{
 		exceptions[0]: NewIntCounter(50, 100),
 		exceptions[1]: NewIntCounter(60, 100),
