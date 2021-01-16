@@ -50,6 +50,6 @@ func main() {
     }
 
     // Reset all counters...
-    manager.Reset()
+    manager.ResetAllExcept()
 }
 ```
